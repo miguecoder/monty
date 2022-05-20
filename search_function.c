@@ -29,7 +29,7 @@ int is_number(char *token)
 void (*search_function(char *stt, unsigned int line_number))()
 {
 	int i;
-	char **list_token = NULL, *delim = "\n\t ";
+	char **list_token = NULL, *delim = "\n\t\r ";
 
 	instruction_t functions[] = {
 	{"push", push},

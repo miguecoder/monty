@@ -11,10 +11,9 @@ int count_word(char *strn)
 
 	while (*strn)
 	{
-		if (*strn == ' ' || *strn == '\n' || *strn == '\t' || *strn == '='
-				|| *strn == ':')
+		if (*strn == ' ' || *strn == '\n' || *strn == '\t' ||
+		*strn == '=' || *strn == ':')
 			ct = 0;
-
 		else if (ct == 0)
 		{
 			ct = 1;
