@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * is_number - check if string received is int or not
  * @token: string to check

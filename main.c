@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * main - Function interpreter for Monty ByteCodes files.
  * @argc: Number of arguments.
