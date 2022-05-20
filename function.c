@@ -91,3 +91,20 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 }
+/**
+ * pint -  prints the value at the top of the stack
+ * @stack: element at the top of the stack (head)
+ * @line_number: constant int value in the structure
+ * Return: void
+ **/
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	(void)line_number;
+	if (tmp != NULL)
+		printf("%d\n", tmp->n);
+	else
+		pint_error(line_number);
+}
