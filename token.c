@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * count_word - Functions that count how many word have the command
  * @strn: String that contains the line command got
