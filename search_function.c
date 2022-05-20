@@ -44,7 +44,7 @@ void (*search_function(char *stt, unsigned int line_number))()
 		if (!list_token[1] || is_number(list_token[1]) == -1)
 		{
 			free(list_token);
-			printf("L%i: usage: push integer\n", line_number);
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 		number = atoi(list_token[1]);

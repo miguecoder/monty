@@ -13,7 +13,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 	{
 		free(new);
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -65,4 +65,29 @@ void free_stack(stack_t **stack)
 		(*stack) = temp->prev;
 		free(temp);
 	}
+}
+/**
+ * pop - Function that delete the value at top of stack
+ * @stack: element at the top of the stack (head)
+ * @line_number: number of line in file .m
+ * Return: void
+ **/
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	*stack = (*stack)->prev;
+
+	if ((*stack) != NULL)
+		(*stack)->next = NULL;
+
+	free(tmp);
+
+	(void)line_number;
 }

@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 		if (f == NULL)
 		{
 			unknown = strtok(buffer, " ");
-			printf("L%i: unknown instruction %s\n", line, unknown);
+			fprintf(stderr, "L%i: unknown instruction %s\n", line, unknown);
 			exit(EXIT_FAILURE);
 		}
 		f(&stack, line);
