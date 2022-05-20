@@ -34,6 +34,8 @@ void (*search_function(char *stt, unsigned int line_number))()
 	instruction_t functions[] = {
 	{"push", push},
 	{"pall", pall},
+	{"pint", pint},
+	{"pop", pop},
 	{NULL, NULL}
 	};
 
