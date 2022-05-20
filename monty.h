@@ -36,13 +36,37 @@ typedef struct instruction_s
 } instruction_t;
 
 int main(int argc, char **argv);
+void execution(char **argv);
 char **tk_cm(char *comand, char *delim);
 int count_word(char *strn);
 int is_number(char *token);
 void (*search_function(char *stt, unsigned int line_number))();
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-void free_stack(stack_t **stack);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void div_(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **stack);
+
+static const instruction_t functions[] = {
+	{"push", push},
+	{"pall", pall},
+	{"pint", pint},
+	{"pop", pop},
+	{"swap", swap},
+	{"add", add},
+	{"sub", sub},
+	{"div", div_},
+	{"mul", mul},
+	{"mod", mod},
+	{"nop", nop},
+	{NULL, NULL}
+	};
+
 #endif

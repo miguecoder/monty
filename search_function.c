@@ -21,6 +21,17 @@ int is_number(char *token)
 	return (1);
 }
 /**
+ * nop - Doesnt do anything
+ * @stack: element at the top of the stack.
+ * @line_number: number of line in file .m
+ * Return: void
+ **/
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
+/**
  * search_function - Function that get function called
  * @stt: First token (string), of line command
  * @line_number: number of line in file .m
@@ -28,16 +39,8 @@ int is_number(char *token)
  */
 void (*search_function(char *stt, unsigned int line_number))()
 {
-	int i;
+	int i = 0;
 	char **list_token = NULL, *delim = "\n\t\r ";
-
-	instruction_t functions[] = {
-	{"push", push},
-	{"pall", pall},
-	{"pint", pint},
-	{"pop", pop},
-	{NULL, NULL}
-	};
 
 	list_token = tk_cm(stt, delim);
 
@@ -56,8 +59,10 @@ void (*search_function(char *stt, unsigned int line_number))()
 	{
 		if (strcmp(functions[i].opcode, stt) == 0)
 		{
+			free(list_token);
 			return (functions[i].f);
 		}
 	}
+	(void)line_number;
 	return (NULL);
 }

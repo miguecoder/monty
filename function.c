@@ -34,8 +34,8 @@ void push(stack_t **stack, unsigned int line_number)
 }
 /**
  * pall - Function that print the elements of a stack
- * @stack: element at the top of the stack (head)
- * @line_number: constant int value in the structure
+ * @stack: element at the top of the stack.
+ * @line_number: number of line in file .m
  * Return: void
  **/
 void pall(stack_t **stack, unsigned int line_number)
@@ -51,50 +51,9 @@ void pall(stack_t **stack, unsigned int line_number)
 	}
 }
 /**
- * free_stack -  frees a dlistint_t list.
- * @stack: pointer to a pointer to the head of a list.
- * Return: void
- */
-void free_stack(stack_t **stack)
-{
-	stack_t *temp;
-
-	while (*stack)
-	{
-		temp = (*stack);
-		(*stack) = temp->prev;
-		free(temp);
-	}
-}
-/**
- * pop - Function that delete the value at top of stack
- * @stack: element at the top of the stack (head)
- * @line_number: number of line in file .m
- * Return: void
- **/
-void pop(stack_t **stack, unsigned int line_number)
-{
-	stack_t *tmp = *stack;
-
-	if (*stack == NULL)
-	{
-		fprintf(stderr, "L%u: can't pop an empty stack", line_number);
-		exit(EXIT_FAILURE);
-	}
-
-	*stack = (*stack)->prev;
-
-	if ((*stack) != NULL)
-		(*stack)->next = NULL;
-
-	free(tmp);
-
-	(void)line_number;
-}
-/**
  * pint -  prints the value at the top of the stack
- * @stack: element at the top of the stack (head)
- * @line_number: constant int value in the structure
+ * @stack: element at the top of the stack.
+ * @line_number: number of line in file .m
  * Return: void
  **/
 
@@ -110,4 +69,49 @@ void pint(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+}
+/**
+ * pop - Function that delete the value at top of stack
+ * @stack: element at the top of the stack.
+ * @line_number: number of line in file .m
+ * Return: void
+ **/
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	*stack = (*stack)->prev;
+
+	if ((*stack) != NULL)
+		(*stack)->next = NULL;
+
+	free(tmp);
+
+	(void)line_number;
+}
+/**
+ * swap - Function that swaps the top two elements of the stack.
+ * @stack: element at the top of the stack.
+ * @line_number: number of line in file .m
+ * Return: void
+ **/
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int i;
+
+	if (*stack == NULL || (*stack)->prev == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	i = (*stack)->n;
+	(*stack)->n = (*stack)->prev->n;
+	(*stack)->prev->n = i;
+	(void)line_number;
 }
